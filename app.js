@@ -1,6 +1,7 @@
 const headLine = document.createElement("h1")
 headLine.innerText = "Scoreboard!"
 
+// Lista med spelare
 const users = [
   {
     name: "Player1",
@@ -29,7 +30,7 @@ const users = [
 ]
 
 // Skapa table element
-const tabel = document.createElement("table")
+const table = document.createElement("table")
 const thead = document.createElement("thead")
 const tbody = document.createElement("thead")
 const trHead = document.createElement("tr")
@@ -56,8 +57,8 @@ trHead.appendChild(thAdd5)
 trHead.appendChild(thRemove5)
 trHead.appendChild(thScore)
 thead.appendChild(trHead)
-tabel.appendChild(thead)
-tabel.appendChild(tbody)
+table.appendChild(thead)
+table.appendChild(tbody)
 
 for (let user of users) {
   // Skapa alla table element för varje spelar rad 
@@ -69,7 +70,7 @@ for (let user of users) {
   const playerRemove5 = document.createElement("td")
   const playerScore = document.createElement("td")
 
-  // lägger till text i varje spelar rads kolumn 
+  // Lägger till text i varje spelar rads kolumn 
   playerName.innerText = user.name
   playerAdd1.innerText = "+ 1"
   playerRemove1.innerText = "- 1"
@@ -78,7 +79,7 @@ for (let user of users) {
   playerScore.innerText = user.score
 
 
-  // lägg till event för add och remove kolumnen
+  // Lägger till event för add och remove kolumnen
   playerAdd1.addEventListener("click", function () {
     user.score++;
     playerScore.innerText = user.score
@@ -99,6 +100,7 @@ for (let user of users) {
     playerScore.innerText = user.score
   })
 
+  // Stoppar in kolumnerna i raden
   playerRow.appendChild(playerName)
   playerRow.appendChild(playerAdd1)
   playerRow.appendChild(playerRemove1)
@@ -106,8 +108,9 @@ for (let user of users) {
   playerRow.appendChild(playerRemove5)
   playerRow.appendChild(playerScore)
 
+  // Stoppar in raden i tbody
   tbody.appendChild(playerRow)
 }
 
 document.body.appendChild(headLine)
-document.body.appendChild(tabel)
+document.body.appendChild(table)
