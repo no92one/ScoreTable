@@ -1,6 +1,7 @@
 const headLine = document.createElement("h1")
 headLine.innerText = "Scoreboard!"
 
+// Lista med spelare
 const users = [
   {
     name: "Player1",
@@ -29,7 +30,7 @@ const users = [
 ]
 
 // Skapa table element
-const tabel = document.createElement("table")
+const table = document.createElement("table")
 const thead = document.createElement("thead")
 const tbody = document.createElement("tbody")
 const trHead = document.createElement("tr")
@@ -56,8 +57,8 @@ trHead.appendChild(thAdd5)
 trHead.appendChild(thRemove5)
 trHead.appendChild(thScore)
 thead.appendChild(trHead)
-tabel.appendChild(thead)
-tabel.appendChild(tbody)
+table.appendChild(thead)
+table.appendChild(tbody)
 
 let index = 0;
 
@@ -79,33 +80,39 @@ for (let user of users) {
   playerRemove5.innerText = "- 5"
   playerScore.innerText = user.score
 
+  // Lägger till ett id i varje kolumn. 
   playerAdd1.id = index
   playerRemove1.id = index
   playerAdd5.id = index
   playerRemove5.id = index
   playerScore.id = index
 
-  playerAdd1.classList.add("add1")
-  playerRemove1.classList.add("remove1")
-  playerAdd5.classList.add("add5")
-  playerRemove5.classList.add("remove5")
-  playerScore.classList.add("playerScore")
+  // Lägger till en class för varje kolumn
+  playerAdd1.classList.add("add1");
+  playerRemove1.classList.add("remove1");
+  playerAdd5.classList.add("add5");
+  playerRemove5.classList.add("remove5");
+  playerScore.classList.add("playerScore");
 
-  playerRow.appendChild(playerName)
-  playerRow.appendChild(playerAdd1)
-  playerRow.appendChild(playerRemove1)
-  playerRow.appendChild(playerAdd5)
-  playerRow.appendChild(playerRemove5)
-  playerRow.appendChild(playerScore)
+  // Stoppar in kolumnerna i raden
+  playerRow.appendChild(playerName);
+  playerRow.appendChild(playerAdd1);
+  playerRow.appendChild(playerRemove1);
+  playerRow.appendChild(playerAdd5);
+  playerRow.appendChild(playerRemove5);
+  playerRow.appendChild(playerScore);
 
-  tbody.appendChild(playerRow)
+  // Stoppar in raden i tbody
+  tbody.appendChild(playerRow);
   index++;
 }
 
+// Lägger till en eventlistener på tbody
 tbody.addEventListener("click", function (event) {
   const target = event.target;
   const playerIndex = target.getAttribute("id")
 
+  // Kollar vilken av poäng förändring kolumnerna som användaren tryckte på
   if (target.matches(".add1")) {
     users[playerIndex].score++;
   } else if (target.matches(".remove1")) {
@@ -116,10 +123,9 @@ tbody.addEventListener("click", function (event) {
     users[playerIndex].score -= 5;
   }
 
+  // Uppdaterar text i score-kolumnen
   document.getElementsByClassName("playerScore")[playerIndex].innerText = users[playerIndex].score
 })
 
 document.body.appendChild(headLine)
 document.body.appendChild(table)
-
-
