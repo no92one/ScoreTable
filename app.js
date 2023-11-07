@@ -91,30 +91,6 @@ for (let user of users) {
   playerRemove5.classList.add("remove5")
   playerScore.classList.add("playerScore")
 
-
-
-
-  // lägg till event för add och remove kolumnen
-  // playerAdd1.addEventListener("click", function () {
-  //   user.score++;
-  //   playerScore.innerText = user.score
-  // })
-
-  // playerRemove1.addEventListener("click", function () {
-  //   user.score--;
-  //   playerScore.innerText = user.score
-  // })
-
-  // playerAdd5.addEventListener("click", function () {
-  //   user.score += 5;
-  //   playerScore.innerText = user.score
-  // })
-
-  // playerRemove5.addEventListener("click", function () {
-  //   user.score -= 5;
-  //   playerScore.innerText = user.score
-  // })
-
   playerRow.appendChild(playerName)
   playerRow.appendChild(playerAdd1)
   playerRow.appendChild(playerRemove1)
