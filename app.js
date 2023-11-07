@@ -79,7 +79,7 @@ for (let user of users) {
   playerScore.innerText = user.score
 
 
-  // Lägger till event för add och remove kolumnen
+  // Lägger till event för add/remove kolumnen för att kunna uppdatera texten i score-kolumnen
   playerAdd1.addEventListener("click", function () {
     user.score++;
     playerScore.innerText = user.score
