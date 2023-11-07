@@ -31,7 +31,7 @@ const users = [
 // Skapa table element
 const tabel = document.createElement("table")
 const thead = document.createElement("thead")
-const tbody = document.createElement("tbody")
+const tbody = document.createElement("thead")
 const trHead = document.createElement("tr")
 const thName = document.createElement("th")
 const thScore = document.createElement("th")
@@ -59,8 +59,6 @@ thead.appendChild(trHead)
 tabel.appendChild(thead)
 tabel.appendChild(tbody)
 
-let index = 0;
-
 for (let user of users) {
   // Skapa alla table element för varje spelar rad 
   const playerRow = document.createElement("tr")
@@ -79,41 +77,27 @@ for (let user of users) {
   playerRemove5.innerText = "- 5"
   playerScore.innerText = user.score
 
-  playerAdd1.id = index
-  playerRemove1.id = index
-  playerAdd5.id = index
-  playerRemove5.id = index
-  playerScore.id = index
-
-  playerAdd1.classList.add("add1")
-  playerRemove1.classList.add("remove1")
-  playerAdd5.classList.add("add5")
-  playerRemove5.classList.add("remove5")
-  playerScore.classList.add("playerScore")
-
-
-
 
   // lägg till event för add och remove kolumnen
-  // playerAdd1.addEventListener("click", function () {
-  //   user.score++;
-  //   playerScore.innerText = user.score
-  // })
+  playerAdd1.addEventListener("click", function () {
+    user.score++;
+    playerScore.innerText = user.score
+  })
 
-  // playerRemove1.addEventListener("click", function () {
-  //   user.score--;
-  //   playerScore.innerText = user.score
-  // })
+  playerRemove1.addEventListener("click", function () {
+    user.score--;
+    playerScore.innerText = user.score
+  })
 
-  // playerAdd5.addEventListener("click", function () {
-  //   user.score += 5;
-  //   playerScore.innerText = user.score
-  // })
+  playerAdd5.addEventListener("click", function () {
+    user.score += 5;
+    playerScore.innerText = user.score
+  })
 
-  // playerRemove5.addEventListener("click", function () {
-  //   user.score -= 5;
-  //   playerScore.innerText = user.score
-  // })
+  playerRemove5.addEventListener("click", function () {
+    user.score -= 5;
+    playerScore.innerText = user.score
+  })
 
   playerRow.appendChild(playerName)
   playerRow.appendChild(playerAdd1)
@@ -123,27 +107,7 @@ for (let user of users) {
   playerRow.appendChild(playerScore)
 
   tbody.appendChild(playerRow)
-  index++;
 }
 
-tbody.addEventListener("click", function (event) {
-  const target = event.target;
-  const playerIndex = target.getAttribute("id")
-
-  if (target.matches(".add1")) {
-    users[playerIndex].score++;
-  } else if (target.matches(".remove1")) {
-    users[playerIndex].score--;
-  } else if (target.matches(".add5")) {
-    users[playerIndex].score += 5;
-  } else if (target.matches(".remove5")) {
-    users[playerIndex].score -= 5;
-  }
-
-  document.getElementsByClassName("playerScore")[playerIndex].innerText = users[playerIndex].score
-})
-
 document.body.appendChild(headLine)
-document.body.appendChild(table)
-
-
+document.body.appendChild(tabel)
